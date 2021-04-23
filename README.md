@@ -7,7 +7,7 @@ g++ main.cpp -o flurstueck
 ```
 and then (on Linux)
 ```
-./flurstueck.out file_type file_name
+./flurstueck file_type file_name
 ```
 (on Windows)
 ```
