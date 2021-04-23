@@ -1,8 +1,8 @@
 #include <iostream>
 #include <stdexcept>
+#include <fstream>
 #include "includes/finders.hpp"
-#include "external_includes/rapidxml.hpp"
-#include "external_includes/rapidxml_utils.hpp"
+#include "external_includes/units.hpp"
 
 int main(int argc, char** argv) {
 	if (argc != 3) {
@@ -14,19 +14,21 @@ int main(int argc, char** argv) {
 	std::string fileFormat = argv[1];
 	std::string fileName = argv[2];
 
-	try {
-		rapidxml::file<> xmlFile{fileName.c_str()};
-		rapidxml::xml_document<> document;
-		document.parse<0>(xmlFile.data());
+
+	std::ifstream inFile(fileName);
+	if (inFile.is_open()) {
+		Units::Unit rootUnit;
+		std::string fileProlog;
+		rootUnit.ReadXML(inFile, true, &fileProlog);
 
 		std::vector<std::string> values;
 
 		if (fileFormat == "aaa" || fileFormat == "AAA") {
 			FinderAAA finder;
-			values = finder.FindValues(&document);
+			values = finder.FindValues(&rootUnit);
 		} else if (fileFormat == "nas" || fileFormat == "NAS") {
 			FinderNAS finder;
-			values = finder.FindValues(&document);
+			values = finder.FindValues(&rootUnit);
 		} else {
 			std::cout << "Invalid format\n";
 			return 0;
@@ -37,7 +39,7 @@ int main(int argc, char** argv) {
 		}
 
 		
-	} catch (std::runtime_error re) {
+	} else {
 		std::cout << "Couldn't open file with name: " << fileName << '\n';
 	}
 

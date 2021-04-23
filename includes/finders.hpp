@@ -3,7 +3,7 @@
 #include <list>
 #include <vector>
 #include <string>
-#include "../external_includes/rapidxml.hpp"
+#include "../external_includes/units.hpp"
 
 
 /* 
@@ -20,16 +20,22 @@ protected:
 	public:
 		NodePath(std::initializer_list<std::string> init_list) : nodesNames(init_list) {}
 
-		std::string GetValueFromNode(rapidxml::xml_document<>* doc) {
-			auto node = doc->first_node(nodesNames.front().c_str());
+		std::string GetValueFromNode(Units::Unit* rootUnit) {
+			if (rootUnit->GetName() != nodesNames.front()) {
+				return " ";
+			}
 
 			auto iterator = nodesNames.begin();
 			iterator++;
 			for (; iterator != nodesNames.end(); iterator++) {
-				node = node->first_node(iterator->c_str());
+				rootUnit = rootUnit->GetChild(*iterator);
+				if (rootUnit == nullptr) return " ";
 			}
 
-			return std::string(node->value());
+			std::string rtnValue;
+			rootUnit->GetValue(rtnValue);
+
+			return rtnValue;
 		}
 
 	};
@@ -53,14 +59,14 @@ public:
 	) : plotNumber(_plotNumber), plotSize(_plotSize), landNumber(_landNumber), 
 		district1Number(_district1Number), district2Number(_district2Number), gemarkungNumber(_gemarkungNumber) {}
 
-	std::vector<std::string> FindValues(rapidxml::xml_document<>* document) {
+	std::vector<std::string> FindValues(Units::Unit* rootUnit) {
 		std::vector<std::string> values;
-		values.push_back(plotNumber.GetValueFromNode(document));
-		values.push_back(plotSize.GetValueFromNode(document));
-		values.push_back(landNumber.GetValueFromNode(document));
-		values.push_back(district1Number.GetValueFromNode(document));
-		values.push_back(district2Number.GetValueFromNode(document));
-		values.push_back(gemarkungNumber.GetValueFromNode(document));
+		values.push_back(plotNumber.GetValueFromNode(rootUnit));
+		values.push_back(plotSize.GetValueFromNode(rootUnit));
+		values.push_back(landNumber.GetValueFromNode(rootUnit));
+		values.push_back(district1Number.GetValueFromNode(rootUnit));
+		values.push_back(district2Number.GetValueFromNode(rootUnit));
+		values.push_back(gemarkungNumber.GetValueFromNode(rootUnit));
 
 		return values;
 	}

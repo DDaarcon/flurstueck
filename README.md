@@ -1,19 +1,20 @@
 # flurstueck
+Version that uses my own [xml reading library](https://github.com/DDaarcon/XMLEditor)
 ### Setting up
 To compile program, in its directory run command
 ```
-g++ main.cpp -o flurstueck
+g++ main.cpp -Llib -lunits -o flurstueck
 ```
 and then (on Linux)
 ```
-./flurstueck.out file_type file_name
+./flurstueck file_type file_name
 ```
 (on Windows)
 ```
 flurstueck file_type file_name
 ```
 ### Information
-Program uses RapidXML C++ library.
+Program uses my own XMLEditor C++ library.
 Application purpose is to get data from correctly formated xml files and print it on screen.
 Now it supports aaa and nas formats.
 ### Extending by new formats

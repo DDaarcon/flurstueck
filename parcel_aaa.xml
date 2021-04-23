@@ -27,19 +27,19 @@
 		<oid>DENW45AL0000dufcFL</oid>
 		<aktualit>2017-06-01Z</aktualit>
 		<geometrie>
-		<gml:MultiSurface gml:id="flurstueck.id.15987944.geometrie.Geom_0" srsName="urn:ogc:def:crs:EPSG::25832" srsDimension="2">
-			<gml:surfaceMember>
-			<gml:Polygon gml:id="flurstueck.id.15987944.geometrie.Geom_1">
-				<gml:exterior>
-				<gml:LinearRing>
-					<gml:posList>
-					372747.174 5640000.54 372749.287 5639999.624 372750.237 5640000.873 372750.398 5640001.276 372749.797 5640001.14 372747.174 5640000.54
-					</gml:posList>
-				</gml:LinearRing>
-				</gml:exterior>
-			</gml:Polygon>
-			</gml:surfaceMember>
-		</gml:MultiSurface>
+			<gml:MultiSurface gml:id="flurstueck.id.15987944.geometrie.Geom_0" srsName="urn:ogc:def:crs:EPSG::25832" srsDimension="2">
+				<gml:surfaceMember>
+					<gml:Polygon gml:id="flurstueck.id.15987944.geometrie.Geom_1">
+						<gml:exterior>
+							<gml:LinearRing>
+								<gml:posList>
+								372747.174 5640000.54 372749.287 5639999.624 372750.237 5640000.873 372750.398 5640001.276 372749.797 5640001.14 372747.174 5640000.54
+								</gml:posList>
+							</gml:LinearRing>
+						</gml:exterior>
+					</gml:Polygon>
+				</gml:surfaceMember>
+			</gml:MultiSurface>
 		</geometrie>
 		<flaeche>2.00</flaeche>
 		<abwrecht>Kein abweichender Rechtszustand</abwrecht>
