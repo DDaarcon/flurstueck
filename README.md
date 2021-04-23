@@ -1,4 +1,5 @@
 # flurstueck
+Version that uses my own xml parser can be found in branch [own_xml_parser](https://github.com/DDaarcon/flurstueck/tree/own_xml_parser).
 ### Setting up
 To compile program, in its directory run command
 ```
